@@ -1,0 +1,48 @@
+Ubuntu16.04
+1、安装pip 
+sudo apt install python-pip
+2、下载TensorFlow 
+sudo pip install tensorflow
+3、下载cython 
+sudo pip install cython
+4、下载opencv-python
+sudo pip install opencv-python
+5、下载easydict
+sudo pip install easydict
+6、下载项目
+git clone https://github.com/wangzpeng/tf-faster-rcnn.git
+7、链接cython
+lib目录下执行：make clean;make;cd ..
+8、安装 Python COCO API
+cd data
+git clone https://github.com/pdollar/coco.git
+cd coco/PythonAPI
+make
+cd ../../..
+9、建立软连接（上传预训练模型https://pan.baidu.com/s/1kWkF3fT）
+cd data
+NET=res101
+TRAIN_IMDB=voc_2007_trainval+voc_2012_trainval
+mkdir -p output/${NET}/${TRAIN_IMDB}
+cd output/${NET}/${TRAIN_IMDB}
+ln -s ../../../voc_0712_80k-110k/voc_2007_trainval+voc_2012_trainval ./default
+cd ../../..
+10、报错libSM.so.6
+sudo apt-get install -y python-qt4
+11、下载模块
+sudo apt-get install python-matplotlib
+12、data目录下运行tools文件夹下的demo.py(更改图片存储路径)
+python ../tools/demo.py
+13、下载scipy和yaml
+sudo pip install scipy
+pip install pyyaml
+14、下载voc数据
+15、Train and test VOC
+mkdir -p data/imagenet_weights
+cd data/imagenet_weights
+wget -v http://download.tensorflow.org/models/resnet_v1_101_2016_08_28.tar.gz
+tar -xzvf resnet_v1_101_2016_08_28.tar.gz
+mv resnet_v1_101.ckpt res101.ckpt
+cd ../..
+./experiments/scripts/train_faster_rcnn.sh 0 pascal_voc res101（最后执行）
+（chmod 777 ./experiments/scripts/train_faster_rcnn.sh更改文件权限）
