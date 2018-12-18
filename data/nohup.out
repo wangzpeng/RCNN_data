@@ -1,0 +1,16 @@
+Loaded network output/res101/voc_2007_trainval+voc_2012_trainval/default/res101_faster_rcnn_iter_110000.ckpt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Demo for data/demo/000456.jpg
+Detection took 20.815s for 300 object proposals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Demo for data/demo/000542.jpg
+Detection took 19.147s for 300 object proposals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Demo for data/demo/001150.jpg
+Detection took 19.248s for 300 object proposals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Demo for data/demo/001763.jpg
+Detection took 19.205s for 300 object proposals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Demo for data/demo/004545.jpg
+Detection took 19.161s for 300 object proposals
