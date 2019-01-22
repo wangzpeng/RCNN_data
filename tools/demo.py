@@ -33,13 +33,9 @@ from nets.vgg16 import vgg16
 from nets.resnet_v1 import resnetv1
 
 CLASSES = ('__background__',
-           'aeroplane', 'bicycle', 'bird', 'boat',
-           'bottle', 'bus', 'car', 'cat', 'chair',
-           'cow', 'diningtable', 'dog', 'horse',
-           'motorbike', 'person', 'pottedplant',
-           'sheep', 'sofa', 'train', 'tvmonitor')
+           'words')
 
-NETS = {'vgg16': ('vgg16_faster_rcnn_iter_70000.ckpt',),'res101': ('res101_faster_rcnn_iter_110000.ckpt',)}
+NETS = {'vgg16': ('vgg16_faster_rcnn_iter_70000.ckpt',),'res101': ('res101_faster_rcnn_iter_700.ckpt',)}
 DATASETS= {'pascal_voc': ('voc_2007_trainval',),'pascal_voc_0712': ('voc_2007_trainval+voc_2012_trainval',)}
 
 def vis_detections(im_name, im, class_name, dets, thresh=0.5):
@@ -54,6 +50,8 @@ def vis_detections(im_name, im, class_name, dets, thresh=0.5):
     for i in inds:
         bbox = dets[i, :4]
         score = dets[i, -1]
+        roi_image=im[int(bbox[1]):int(bbox[3]),int(bbox[0]):int(bbox[2])]
+        cv2.imwrite('/home/wang/tf-faster-rcnn/demo_result/roi'+im_name,roi_image)
 
         ax.add_patch(
             plt.Rectangle((bbox[0], bbox[1]),
@@ -73,7 +71,7 @@ def vis_detections(im_name, im, class_name, dets, thresh=0.5):
     plt.axis('off')
     plt.tight_layout()
     #plt.draw()
-    plt.savefig('/home/zhenpeng/tf-faster-rcnn/demo_result/'+class_name+im_name)
+    plt.savefig('/home/wang/tf-faster-rcnn/demo_result/'+class_name+im_name)
 
 def demo(sess, net, image_name):
     """Detect object classes in an image using pre-computed object proposals."""
@@ -141,15 +139,14 @@ if __name__ == '__main__':
         net = resnetv1(num_layers=101)
     else:
         raise NotImplementedError
-    net.create_architecture("TEST", 21,
+    net.create_architecture("TEST", 2,
                           tag='default', anchor_scales=[8, 16, 32])
     saver = tf.train.Saver()
     saver.restore(sess, tfmodel)
 
     print('Loaded network {:s}'.format(tfmodel))
 
-    im_names = ['000456.jpg', '000542.jpg', '001150.jpg',
-                '001763.jpg', '004545.jpg']
+    im_names = ['A_20170313123156_0.jpg']
     for im_name in im_names:
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('Demo for data/demo/{}'.format(im_name))

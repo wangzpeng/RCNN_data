@@ -17,22 +17,3 @@ image    result
 9.bmp 9
 10.bmp 0
 识别结果：SITU9156590
-2019-01-21 17:03:15.009991: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-Loaded network output/res101/voc_2007_trainval+voc_2012_trainval/default/res101_faster_rcnn_iter_700.ckpt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Demo for data/demo/A_20170313123156_0.jpg
-Detection took 4.271s for 300 object proposals
-2019-01-21 17:03:24.206001: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-image    result
-0.bmp S
-1.bmp I
-2.bmp T
-3.bmp U
-4.bmp 9
-5.bmp 1
-6.bmp 5
-7.bmp 6
-8.bmp 5
-9.bmp 9
-10.bmp 0
-识别结果：SITU9156590
